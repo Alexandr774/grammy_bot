@@ -1,6 +1,5 @@
 import { userT } from '@src/tvs'
 import { createUser } from '@src/reports'
-import * as console from "node:console";
 
 
 export async function getUser( ctx: userT) {
