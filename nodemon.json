@@ -3,7 +3,5 @@
     "src"
   ],
   "ext": "ts",
-  "exec": "tsx ./src/index.ts",
-  "signal": "SIGTERM",
-  "restartable": "rs"
+  "exec": "tsx ./src/index.ts"
 }

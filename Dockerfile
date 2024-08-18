@@ -14,7 +14,8 @@ COPY package*.json ./
 # Установка зависимостей
 RUN npm install
 
-RUN nodemon
+RUN nodemon src/index.ts
+
 
 # Копирование исходного кода приложения
 COPY . .

@@ -1,6 +1,6 @@
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 import * as console from "node:console";
-import {db} from "./storage/db";
+import {db} from "@main./storage/db";
 import {CodeAirportT, codeCountryT} from "@src/tvs";
 
 
@@ -10,7 +10,9 @@ async function getCodeCity(): Promise<codeCountryT[]> {
   return city
 }
 
-async function addCodeCity() {
+export async function addCodeCity() {
+
+  console.log('запущено добавление кода городов')
   const cityes: codeCountryT[] = await getCodeCity();
   try {
     for (const city of cityes) {
@@ -40,7 +42,8 @@ async function getCodeAirport(): Promise<CodeAirportT[]> {
 }
 
 
-async function addCodeAirport() {
+export async function addCodeAirport() {
+   console.log('запущено добавление кода аэропортов')
   const airports: CodeAirportT[] = await getCodeAirport();
   try {
     for (const airport of airports) {
@@ -62,5 +65,5 @@ async function addCodeAirport() {
   }
 }
 
-addCodeAirport()
+
 

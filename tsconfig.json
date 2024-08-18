@@ -20,6 +20,7 @@
         "paths": {
             "@src": ["./src/index"],
             "@src/*": ["./src/*"],
+            "@main./*": ["*"]
         },
         "forceConsistentCasingInFileNames": true,
         "strict": true,
