@@ -4,7 +4,6 @@ FROM node:22.4.1
 # Установка nodemon глобально
 RUN npm install -g nodemon
 
-
 # Создание и использование рабочей директории
 WORKDIR /usr/src/app
 
@@ -14,11 +13,14 @@ COPY package*.json ./
 # Установка зависимостей
 RUN npm install
 
-RUN nodemon src/index.ts
-
-
 # Копирование исходного кода приложения
 COPY . .
+
+# Удаляем node_modules, если он был случайно скопирован
+RUN rm -rf node_modules
+
+# Устанавливаем снова зависимости внутри контейнера
+RUN npm ci
 
 # Установка переменной окружения для nodemon
 ENV NODE_ENV=development
@@ -27,4 +29,4 @@ ENV NODE_ENV=development
 EXPOSE 3000
 
 # Команда для запуска приложения с использованием nodemon
-CMD ["nodemon", "index.js"]
+CMD ["nodemon", "src/index.ts"]

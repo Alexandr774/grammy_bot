@@ -11,8 +11,6 @@ async function getCodeCity(): Promise<codeCountryT[]> {
 }
 
 export async function addCodeCity() {
-
-  console.log('запущено добавление кода городов')
   const cityes: codeCountryT[] = await getCodeCity();
   try {
     for (const city of cityes) {
@@ -43,7 +41,6 @@ async function getCodeAirport(): Promise<CodeAirportT[]> {
 
 
 export async function addCodeAirport() {
-   console.log('запущено добавление кода аэропортов')
   const airports: CodeAirportT[] = await getCodeAirport();
   try {
     for (const airport of airports) {
