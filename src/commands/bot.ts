@@ -1,7 +1,7 @@
 import {Bot, Context, InlineKeyboard, session} from "grammy";
 import {getUser} from "@src/services";
 import { conversations, createConversation,} from "@grammyjs/conversations";
-import { findTicket } from '@src/conversations/find_ticket'
+import { dialogueFindTicket } from '@src/conversations/find_ticket'
 
 
 
@@ -15,13 +15,13 @@ export default (bot: any): void => {
 
   bot.use(session({initial: () => ({})}));
   bot.use(conversations());
-  bot.use(createConversation(findTicket));
+  bot.use(createConversation(dialogueFindTicket));
 
 
   bot.command("find_ticket", async (ctx: any) => {
     const msg: boolean = await getUser(ctx.from);
     await ctx.reply(msg);
-    await ctx.conversation.enter("findTicket");
+    await ctx.conversation.enter("dialogueFindTicket");
 
   });
 
@@ -39,7 +39,7 @@ export default (bot: any): void => {
   bot.on("callback_query:data", async (ctx: any) => {
     const selectButton = ctx.callbackQuery.data
     if (selectButton == "find_ticket") {
-      await ctx.conversation.enter("findTicket");
+      await ctx.conversation.enter("dialogueFindTicket");
     }      // await ctx.answerCallbackQuery() удаление индикатора загрузки
   })
 };

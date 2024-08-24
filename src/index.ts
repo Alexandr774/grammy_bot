@@ -10,7 +10,6 @@ dotenv.config({ path: path.join(__dirname,'../.env') });
 
 const bot = new Bot(process.env.BOT_API_KEY!);
 
-// bot.use(conversations());
 
 
 bot_command(bot)
